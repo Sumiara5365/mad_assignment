@@ -24,7 +24,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  String message = 'Hi, Welcome in the first page!';
+  String message = 'Hi, Welcome!';
 
   void updateMessage() {
     setState(() {
@@ -37,7 +37,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(child: Text('Button App')),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green,
       ),
       body: Center(
         child: Column(
@@ -48,14 +48,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.teal,
+                color: Colors.deepOrangeAccent,
                 fontFamily: 'DMSans',
               ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: updateMessage,
-              child: const Text('tap it'),
+              child: const Text('Tap Me'),
             ),
           ],
         ),
