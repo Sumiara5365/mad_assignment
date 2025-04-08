@@ -1,53 +1,86 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const ListApp());
+  runApp(const StyledTextApp());
 }
 
-class ListApp extends StatelessWidget {
-  const ListApp({super.key});
+class StyledTextApp extends StatelessWidget {
+  const StyledTextApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ItemListScreen(),
+      home: const TextStyleScreen(),
     );
   }
 }
 
-class ItemListScreen extends StatelessWidget {
-  const ItemListScreen({super.key});
+class TextStyleScreen extends StatelessWidget {
+  const TextStyleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('List AppBar')),
-        backgroundColor: Colors.pink,
+        title: const Center(child: Text('Styled Text AppBar')),
+        backgroundColor: Colors.blueAccent,
       ),
-      body: ListView.builder(
-        itemCount: 6,
-        itemBuilder: (context, index) {
-          return Container(
-            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            decoration: BoxDecoration(
-              color: Colors.primaries[index % Colors.primaries.length],
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: ListTile(
-              title: Text(
-                'Item ${index + 1}',
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'DMSans',
-                  color: Colors.white,
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'large and bold text',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
-          );
-        },
+            const SizedBox(height: 10),
+            const Text(
+              'Medium text which are in Italic',
+              style: TextStyle(
+                fontSize: 22,
+                fontStyle: FontStyle.italic,
+                color: Colors.blue,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Underlined',
+              style: TextStyle(
+                fontSize: 20,
+                decoration: TextDecoration.underline,
+                color: Colors.pink,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  'Left-aligned ',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.red,
+                  ),
+                ),
+                Text(
+                  'Right-aligned',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.teal,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
