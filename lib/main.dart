@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Center(child: Text('Hello World')),
-          backgroundColor: Colors.yellow,
+          backgroundColor: Colors.pink,
         ),
         body: const Center(
           child: Text(
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.redAccent,
+              color: Colors.teal,
               fontFamily: 'DMSans',
             ),
           ),
