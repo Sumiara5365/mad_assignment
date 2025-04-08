@@ -1,64 +1,53 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const WelcomeApp());
+  runApp(const ListApp());
 }
 
-class WelcomeApp extends StatelessWidget {
-  const WelcomeApp({super.key});
+class ListApp extends StatelessWidget {
+  const ListApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      home: const ItemListScreen(),
     );
   }
 }
 
-class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
-
-  @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
-}
-
-class _WelcomeScreenState extends State<WelcomeScreen> {
-  String message = 'Hi, Welcome in the first page!';
-
-  void updateMessage() {
-    setState(() {
-      message = 'Button Pressed!';
-    });
-  }
+class ItemListScreen extends StatelessWidget {
+  const ItemListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Button App')),
-        backgroundColor: Colors.blue,
+        title: const Center(child: Text('List AppBar')),
+        backgroundColor: Colors.pink,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              message,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal,
-                fontFamily: 'DMSans',
+      body: ListView.builder(
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            decoration: BoxDecoration(
+              color: Colors.primaries[index % Colors.primaries.length],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: ListTile(
+              title: Text(
+                'Item ${index + 1}',
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'DMSans',
+                  color: Colors.white,
+                ),
               ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: updateMessage,
-              child: const Text('tap it'),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
