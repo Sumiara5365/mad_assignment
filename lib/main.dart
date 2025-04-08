@@ -1,85 +1,62 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const StyledTextApp());
+  runApp(const NavigationApp());
 }
 
-class StyledTextApp extends StatelessWidget {
-  const StyledTextApp({super.key});
+class NavigationApp extends StatelessWidget {
+  const NavigationApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const TextStyleScreen(),
+      home: const FirstScreen(),
     );
   }
 }
 
-class TextStyleScreen extends StatelessWidget {
-  const TextStyleScreen({super.key});
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Styled Text AppBar')),
-        backgroundColor: Colors.blueAccent,
+        title: const Center(child: Text('First Screen')),
+        backgroundColor: Colors.pink,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'large and bold text',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Medium text which are in Italic',
-              style: TextStyle(
-                fontSize: 22,
-                fontStyle: FontStyle.italic,
-                color: Colors.blue,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Underlined',
-              style: TextStyle(
-                fontSize: 20,
-                decoration: TextDecoration.underline,
-                color: Colors.pink,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  'Left-aligned ',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.orangeAccent,
-                  ),
-                ),
-                Text(
-                  'Right-aligned',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.teal,
-                  ),
-                ),
-              ],
-            ),
-          ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SecondScreen()),
+            );
+          },
+          child: const Text('Go to Second Screen'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Center(child: Text('Second Screen')),
+        backgroundColor: Colors.blue,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Back to First Screen'),
         ),
       ),
     );
